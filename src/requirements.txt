@@ -3,4 +3,5 @@
 google-cloud-bigquery
 faker
 uuid
+time
 random
