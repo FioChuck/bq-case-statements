@@ -7,10 +7,12 @@ import uuid
 import time
 # Construct a BigQuery client object.
 
+start_time = time.time()
+
 
 def main(request):
     client = bigquery.Client()
-    start_time = time.time()
+    # start_time = time.time()
 
     loop = 1
     for i in range(loop):
@@ -124,6 +126,6 @@ def main(request):
         job.result()  # Wait for the job to complete.
 
         print('Done Writing Disputes to BigQuery')
-        print("--- %s seconds ---" % (time.time() - start_time))
+        print("--- %s seconds ---" % (time.time() - start_time))  # done
 
     return 'finish'
