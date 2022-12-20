@@ -27,3 +27,4 @@ jobs:
           runtime: python310
           env_vars: ""
           timeout: 500
+          memory_mb: 256
