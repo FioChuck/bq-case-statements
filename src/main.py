@@ -14,14 +14,14 @@ def main(request):
 
     loop = 1
     for i in range(loop):
-        print('Percent Complete: ' + str(100*i/loop))
+        # print('Percent Complete: ' + str(100*i/loop))
         print("--- %s seconds ---" % (time.time() - start_time))
 
         # reset records to insert
         disputes_records = []
         archives_records = []
 
-        for x in range(10000):
+        for x in range(1000):
             id = str(uuid.uuid1())
 
             fake = Faker()  # fake proxy object
@@ -74,6 +74,8 @@ def main(request):
         ######################
         #### Write to BQ #####
         ######################
+        print('Writing Archives to BigQuery')
+        print("--- %s seconds ---" % (time.time() - start_time))
 
         job_config = bigquery.LoadJobConfig(
             # Specify a (partial) schema. All columns are always written to the
@@ -95,6 +97,8 @@ def main(request):
         ######################
         #### Write to BQ #####
         ######################
+        print('Writing Archives to BigQuery')
+        print("--- %s seconds ---" % (time.time() - start_time))
 
         job_config = bigquery.LoadJobConfig(
             # Specify a (partial) schema. All columns are always written to the
@@ -114,5 +118,8 @@ def main(request):
             disputes_df, table_id, job_config=job_config
         )  # Make an API request.
         job.result()  # Wait for the job to complete.
+
+        print('Done writing to BigQuery')
+        print("--- %s seconds ---" % (time.time() - start_time))
 
     return 'finish'
