@@ -114,6 +114,3 @@ def main():
             disputes_df, table_id, job_config=job_config
         )  # Make an API request.
         job.result()  # Wait for the job to complete.
-
-
-main()
