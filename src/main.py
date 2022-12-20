@@ -8,7 +8,7 @@ import time
 # Construct a BigQuery client object.
 
 
-def main():
+def main(request):
     client = bigquery.Client()
     start_time = time.time()
 
@@ -114,3 +114,5 @@ def main():
             disputes_df, table_id, job_config=job_config
         )  # Make an API request.
         job.result()  # Wait for the job to complete.
+
+    return 'finish'
