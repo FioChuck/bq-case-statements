@@ -71,12 +71,13 @@ def main(request):
                 "archive_date"
             ]
         )
+        print('Done Creating Records')
+        print("--- %s seconds ---" % (time.time() - start_time))
 
         ######################
         #### Write to BQ #####
         ######################
         print('Writing Archives to BigQuery')
-        print("--- %s seconds ---" % (time.time() - start_time))
 
         job_config = bigquery.LoadJobConfig(
             # Specify a (partial) schema. All columns are always written to the
@@ -95,11 +96,13 @@ def main(request):
         )  # Make an API request.
         job.result()  # Wait for the job to complete.
 
+        print('Done Writing Archives to BigQuery')
+        print("--- %s seconds ---" % (time.time() - start_time))
+
         ######################
         #### Write to BQ #####
         ######################
-        print('Writing Archives to BigQuery')
-        print("--- %s seconds ---" % (time.time() - start_time))
+        print('Writing Disputes to BigQuery')
 
         job_config = bigquery.LoadJobConfig(
             # Specify a (partial) schema. All columns are always written to the
@@ -120,7 +123,7 @@ def main(request):
         )  # Make an API request.
         job.result()  # Wait for the job to complete.
 
-        print('Done writing to BigQuery')
+        print('Done Writing Disputes to BigQuery')
         print("--- %s seconds ---" % (time.time() - start_time))
 
     return 'finish'
