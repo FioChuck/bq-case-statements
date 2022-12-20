@@ -1,7 +1,6 @@
 # Function dependencies, for example:
 # package>=version
 google-cloud-bigquery
-faker
-uuid
-time
-random
+Faker==15.3.4
+uuid==1.30
+
