@@ -15,7 +15,8 @@ def main(request):
     loop = 1
     for i in range(loop):
         # print('Percent Complete: ' + str(100*i/loop))
-        print("--- %s seconds ---" % (time.time() - start_time))
+        # print("--- %s seconds ---" % (time.time() - start_time))
+        print('Creating Records')
 
         # reset records to insert
         disputes_records = []
