@@ -26,3 +26,4 @@ jobs:
           entry_point: main
           runtime: python310
           env_vars: ""
+          timeout: 500
