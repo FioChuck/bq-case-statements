@@ -9,7 +9,7 @@ import time
 client = bigquery.Client()
 start_time = time.time()
 
-loop = 10
+loop = 40
 for i in range(loop):
     print('Percent Complete: ' + str(100*i/loop))
     print("--- %s seconds ---" % (time.time() - start_time))
