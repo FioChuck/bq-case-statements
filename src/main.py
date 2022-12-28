@@ -90,33 +90,31 @@ def bq_write(df, table, schema):
     job.result()  # Wait for the job to complete.
 
 
-######### CALCULATIONS ###################
+def main():
+    archive_schema = [
+        bigquery.SchemaField("id", bigquery.enums.SqlTypeNames.STRING),
+        bigquery.SchemaField("archive_date", bigquery.enums.SqlTypeNames.DATE)
+    ]
 
-archive_schema = [
-    bigquery.SchemaField("id", bigquery.enums.SqlTypeNames.STRING),
-    bigquery.SchemaField("archive_date", bigquery.enums.SqlTypeNames.DATE)
-]
+    disputes_schema = [
+        bigquery.SchemaField("id", bigquery.enums.SqlTypeNames.STRING),
+        bigquery.SchemaField("name", bigquery.enums.SqlTypeNames.STRING),
+        bigquery.SchemaField("dispute_date", bigquery.enums.SqlTypeNames.DATE),
+    ]
 
-disputes_schema = [
-    bigquery.SchemaField("id", bigquery.enums.SqlTypeNames.STRING),
-    bigquery.SchemaField("name", bigquery.enums.SqlTypeNames.STRING),
-    bigquery.SchemaField("dispute_date", bigquery.enums.SqlTypeNames.DATE),
-]
+    fake_record = Record()  # instantiate Record object
+    fake_record_array = Record_list()  # instatiate Record_list object
 
+    for x in range(1000000):
+        fake_record.fake_values()  # set fake values
+        fake_record_array.fake_list(fake_record)  # insert values into list
 
-fake_record = Record()  # instantiate Record object
-fake_record_array = Record_list()  # instatiate Record_list object
+    fake_record_array.fake_df()  # insert list into pandas dataframe
 
-for x in range(1000000):
-    fake_record.fake_values()  # set fake values
-    fake_record_array.fake_list(fake_record)  # insert values into list
+    print('Done Creating Dataframes')
+    print("--- %s seconds ---" % (time.time() - start_time))
 
-fake_record_array.fake_df()  # insert list into pandas dataframe
+    # 100,000 in 10.0 seconds
 
-print('Done Creating Dataframes')
-print("--- %s seconds ---" % (time.time() - start_time))
-
-# 100,000 in 10.0 seconds
-
-# bq_write(fake_record_array.archives_df,
-#          "cf-data-analytics.case_statement.archives", archive_schema)
+    # bq_write(fake_record_array.archives_df,
+    #          "cf-data-analytics.case_statement.archives", archive_schema)

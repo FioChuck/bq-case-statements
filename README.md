@@ -2,7 +2,7 @@
 
 A simple Python GCP Cloud Function to insert mock transaction data into BigQuery.
 
-The mock data and BigQuery statements _(below)_ are used to highlight a SQL anti-pattern and recommend alternatives.
+The mock data and BigQuery statements _(below)_ are used to highlight a SQL anti-pattern and recommended alternatives.
 
 The two SQL queries shown below achieve the same result; however, one technique is more optimized. This example was created to document the importance of columnar transformations versus multiple left joins.
 
