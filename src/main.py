@@ -118,4 +118,4 @@ def main():
              "cf-data-analytics.case_statement.disputes", disputes_schema)
 
 
-main()
+# main()
