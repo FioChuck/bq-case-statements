@@ -90,7 +90,7 @@ def bq_write(df, table, schema):
     job.result()  # Wait for the job to complete.
 
 
-def main():
+def main(request):
     archive_schema = [
         bigquery.SchemaField("id", bigquery.enums.SqlTypeNames.STRING),
         bigquery.SchemaField("archive_date", bigquery.enums.SqlTypeNames.DATE)
