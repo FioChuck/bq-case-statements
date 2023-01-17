@@ -105,7 +105,7 @@ def main():
     fake_record = Record()  # instantiate Record object
     fake_record_array = Record_list()  # instatiate Record_list object
 
-    for x in range(1000000):
+    for x in range(10000):
         fake_record.fake_values()  # set fake values
         fake_record_array.fake_list(fake_record)  # insert values into list
 
@@ -114,7 +114,8 @@ def main():
     print('Done Creating Dataframes')
     print("--- %s seconds ---" % (time.time() - start_time))
 
-    # 100,000 in 10.0 seconds
+    bq_write(fake_record_array.disputes_df,
+             "cf-data-analytics.case_statement.disputes", disputes_schema)
 
-    # bq_write(fake_record_array.archives_df,
-    #          "cf-data-analytics.case_statement.archives", archive_schema)
+
+main()
